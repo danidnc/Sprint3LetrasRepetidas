@@ -1,9 +1,11 @@
-//EJERICIO 2
-console.log("Ejercicio 2.");
-const arrNombre = ['D', 'A', 'N', 'I', 'E', 'L']; //inicializa array con el nombre
+//EJERICIO 3
+console.log("Ejercicio 3.");
+const arrNombre = ['D', 'A', 'N', 'I', 'E', 'L', 'E', 'L']; //inicializa array con el nombre
 let nombre = arrNombre.join(""); //asigna el valor del array en una variable, sin separadores
 console.log("Partiremos del nombre : " + nombre); //imprime por consola el nombre a procesar
-let letra;
+let letra; //variable que almacena valor del array en la iteración para evaluar Unicode en el ejercicio 2
+let contador = 0; //variable que contará las veces que se repite un carácter en el ejercicio 3
+let mapLetras = new Map; //Map que almacena cada carácter y el número de veces que aparece en el arrNombre
 
 for (i = 0; i < arrNombre.length; i++) { //bucle que imprime por consola posición y valor del array
     console.log(`Letra en posición ${i} -> ${arrNombre[i]}`)
@@ -14,5 +16,17 @@ for (i = 0; i < arrNombre.length; i++) { //bucle que imprime por consola posici�
         console.log(`He encontrado una vocal : ${arrNombre[i]}`); //imprime por consola que ha encontrado una vocal
     } else if ((letra.charCodeAt() > 96) && (letra.charCodeAt() < 123)) { //controla que el código unicode corresponda a una consonante minúscula
         console.log(`He encontrado una consonante : ${arrNombre[i]}`); //imprime el valor original
+    }
+    arrNombre.filter(contarRepeticiones);
+    mapLetras.set(arrNombre[i], contador);
+    contador = 0;
+}
+
+console.log("Este es el map resultante");
+console.log(mapLetras);
+
+function contarRepeticiones(valor) {
+    if (valor.toLowerCase() == letra) {
+        contador++;
     }
 }
