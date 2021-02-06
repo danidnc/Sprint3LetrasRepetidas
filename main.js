@@ -1,4 +1,4 @@
-//EJERICIO 3
+//EJERICIO 1 a 3
 console.log("Ejercicio 3.");
 const arrNombre = ['D', 'A', 'N', 'I', 'E', 'L', 'E', 'L']; //inicializa array con el nombre
 let nombre = arrNombre.join(""); //asigna el valor del array en una variable, sin separadores
@@ -17,16 +17,21 @@ for (i = 0; i < arrNombre.length; i++) { //bucle que imprime por consola posici�
     } else if ((letra.charCodeAt() > 96) && (letra.charCodeAt() < 123)) { //controla que el código unicode corresponda a una consonante minúscula
         console.log(`He encontrado una consonante : ${arrNombre[i]}`); //imprime el valor original
     }
-    arrNombre.filter(contarRepeticiones);
-    mapLetras.set(arrNombre[i], contador);
-    contador = 0;
+    arrNombre.filter(contarRepeticiones); //llamada al método filter para iterar por el array buscando coincidencia
+    mapLetras.set(arrNombre[i], contador); //método set para insertar como llave la letra y como valor el contador de repeticiones
+    contador = 0; //reinicializa el contador a 0 para estar lista en la nueva invocación al método filter
 }
 
 console.log("Este es el map resultante");
-console.log(mapLetras);
+console.log(mapLetras); //imprime el map resultante
 
-function contarRepeticiones(valor) {
-    if (valor.toLowerCase() == letra) {
-        contador++;
+function contarRepeticiones(valor) { //función que repasa coincidencias en el array nombre
+    if (valor.toLowerCase() == letra) { //compara el valor del array con la letra (var global) que contiene el valor evaluado en el bucle for inicial
+        contador++; //incrementa el contador al haber encontrado coincidencia
     }
 }
+
+//EJERCICIO 4
+let arrApellido = ['N', 'A', 'V', 'A', 'R', 'R', 'O']; //incializa array con el apellido
+let arrFullName = arrNombre.concat(" ", arrApellido); //asigna al array fullname el valor de nombre concatenado con espacio y el apellido
+console.log("El nombre completo es : " + arrFullName); //imprime en consola el array resultante de la concatenación
