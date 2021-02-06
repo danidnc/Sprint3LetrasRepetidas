@@ -35,3 +35,29 @@ function contarRepeticiones(valor) { //función que repasa coincidencias en el a
 let arrApellido = ['N', 'A', 'V', 'A', 'R', 'R', 'O']; //incializa array con el apellido
 let arrFullName = arrNombre.concat(" ", arrApellido); //asigna al array fullname el valor de nombre concatenado con espacio y el apellido
 console.log("El nombre completo es : " + arrFullName); //imprime en consola el array resultante de la concatenación
+
+
+// EJERCICIO DE NIVEL 2
+let str = "Una dirección de correo electrónico es la dirección que utiliza para recibir y enviar correos electrónicos. Se muestra a los destinatarios de sus correos electrónicos para que sepan quién le envió un correo electrónico. Cada dirección de correo electrónico sólo se puede asignar una vez en todo el mundo y, por lo tanto, está disponible exclusivamente para usted. No puede cambiar las direcciones de correo electrónico, pero puede eliminarlas en cualquier momento. Una dirección de correo electrónico consiste en el signo @ (arroba), el nombre de usuario delante y el dominio detrás, por ejemplo, nombre-de-usuario@ionos.es: La parte del dominio depende del dominio bajo el cual se crea la dirección de correo electrónico: en nuestro ejemplo es ionos.es. Esta información varía de proveedor a proveedor, por lo que una parte del dominio también puede ser gmail.com o gmx.es si utiliza una dirección de correo electrónico de estos proveedores. Si ha registrado su propio dominio, por ejemplo, www.el-nombre-de-sus-sueños.es, las direcciones de correo electrónico que configura para el dominio lo tienen como parte del dominio (nombre-de-usuario@el-nombre-de-sus-sueños.es o nombre-de-usuario@el-nombre-de-sus-sueños.ES). El nombre de usuario es la parte de una dirección de correo electrónico que puede seleccionar libremente en la medida de lo posible. Puede, por ejemplo, utilizar su propio nombre o el nombre o departamento de una empresa. Si utiliza una dirección de correo electrónico con un proveedor de correo como gmail.com o gmx.es, es posible que la combinación con la parte del dominio deseada ya esté registrada. En este caso, deberá considerar alternativas para el nombre de usuario de su dirección de correo electrónico. Si utiliza su propio dominio, estas restricciones no se aplican porque sólo usted puede crear direcciones de correo electrónico que coincidan con su propio dominio. En resumen, nombre-de-usuario@ionos.es es un email";
+//variable con el enunciado a filtar del ejercicio
+
+let arrEmails = []; //array que almacenará los email encontrados
+let expresion = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)/gi; //variable con la expresión regular para encontrar emails
+
+validarEmailFn(str); //invoca función donde filtra emails
+
+function validarEmailFn(cadena) { //la funcion recibe el string a filtrar
+    arrEmails = cadena.match(expresion); //invoca método match con la expresión regular como parámetro de búsqueda y guarda resultado en arrEmails
+    arrEmails.forEach(borrarRepetidos); //itera el array eliminando emails repetidos
+    arrEmails.forEach(mostrarEmails); //muestra por consola los emails que haya encontrado 
+}
+
+function mostrarEmails(valor) { //invocada mediante forEach para recorrer el array donde están almacenados los emails
+    console.log("Email(s) encontrado en el string : " + valor); //imprime por consola los emails encontrados
+}
+
+function borrarRepetidos(valor, indice) { //invocada mediante forEach para recorrer el array donde están almacenados los emails
+    if (valor == arrEmails[indice + 1]) { //si el elemento es igual al siguiente ->
+        arrEmails.splice(indice + 1); //elimina la posición donde está el elemento repetido
+    }
+}
